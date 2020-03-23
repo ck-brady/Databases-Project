@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>customer register page</title>
+<script>
+
+	function validate() {
+		var guestID = document.getElementById("guestID");
+		var guestFirstName = document.getElementById("guestFirstName");
+		var guestLastName = document.getElementById("guestLastName");
+		var guestEmail = document.getElementById("guestEmail");
+		var guestPhone = document.getElementById("guestPhone");
+		if(guestID.value == "" || guestFirstName.value == "" || guestLastName.value == "" || guestEmail.value == "" || guestPhone.value == ""){
+			alert("You need to fill all the information");
+			return false;
+		}
+		else
+			return true;
+	}
+
+</script>
+</head>
+<body>
+<form method = "post" action="cusRegister">
+please input your account_ID:<input type="text" id="guestID" name="guestID"><br><br>
+please input your First Name:<input type="text" id="guestFirstName" name="guestFirstName"><br><br>
+please input your Last Name:<input type="text" id="guestLastName" name="guestLastName"><br><br>
+please input your address:<input type="text" id="guestAddress" name="guestAddress"><br><br>
+please input your email:<input type="text" id="guestEmail" name="guestEmail"><br><br>
+please input your phone number:<input type="text" id="guestPhone" name="guestPhone"><br><br>
+<button type="submit" value="submit" onclick="return validate();">submit</button>
+<button type="reset" value="reset">reset</button>
+</form>
+
+</body>
+</html>
