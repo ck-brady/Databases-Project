@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class Control {
 	
-	private static final String url = "jdbc:postgresql://localhost/Project 2132";
-	private static final String username = "postgres";
-	private static final String password = "7355";
+	private static final String url = "jdbc:postgresql://csi2132.postgres.database.azure.com:5432/Project 2132 Prod";
+	private static final String username = "postgres@CSI2132";
+	private static final String password = "CSI2132proj";
 	
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		
@@ -61,7 +61,10 @@ public class Control {
 			String location = scanner.nextLine();
 			System.out.println("Searching for properties in " + location + "...");
 			rs = st.executeQuery("SELECT * FROM listing NATURAL JOIN property WHERE address = '" + location + "'");
-			printRS(rs);
+			if (!rs.isBeforeFirst())
+				System.out.println("No results found.");
+			else
+				printRS(rs);
 		}
 		//Host
 		if (accountType == 2) {
@@ -141,7 +144,7 @@ public class Control {
 			} else if (opType == 3) {
 				rs = st.executeQuery("SELECT listing.property_id, listing.listing_id, rental_agreement.ra_id, rental_agreement.start_date, rental_agreement.end_date "
 						+ "FROM listing NATURAL JOIN property "
-						+ "JOIN rental_agreement ON rental_agreement.listing_id = listing.listing_id"
+						+ "JOIN rental_agreement ON rental_agreement.listing_id = listing.listing_id "
 						+ "WHERE address LIKE " + opAreaPattern);
 			} else if (opType ==4) {
 				System.out.println("Enter the ID of the property you wish to find:");
